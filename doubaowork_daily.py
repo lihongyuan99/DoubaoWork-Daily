@@ -53,9 +53,6 @@ from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple
 from urllib.parse import unquote, urlsplit
 
 import requests
-import urllib3
-
-urllib3.disable_warnings()
 
 try:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -850,7 +847,7 @@ class DoubaoClient:
                 headers=self._headers(),
                 json=body,
                 timeout=timeout,
-                verify=False,
+                verify=True,
             )
         except Exception as error:
             self.last_diagnostic["message"] = str(error)
